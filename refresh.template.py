@@ -103,7 +103,7 @@ _print_header_finding_warning_once.has_logged = False
 def _get_bazel_cached_action_keys():
     """Gets the set of actionKeys cached in bazel-out."""
     action_cache_process = subprocess.run(
-        ['bazel', 'dump', '--action_cache'],
+        ['bazelisk', 'dump', '--action_cache'],
         # MIN_PY=3.7: Replace PIPEs with capture_output.
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
@@ -856,7 +856,7 @@ def _get_commands(target: str, flags: str):
 
     def _get_commands(target_statment, file_path):
         aquery_args = [
-            'bazel',
+            'bazelisk',
             'aquery',
             # Aquery docs if you need em: https://docs.bazel.build/versions/master/aquery.html
             # Aquery output proto reference: https://github.com/bazelbuild/bazel/blob/master/src/main/protobuf/analysis_v2.proto
